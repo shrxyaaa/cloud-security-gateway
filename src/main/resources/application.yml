@@ -1,0 +1,15 @@
+server:
+  port: 9000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: order-service-route
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/orders/**
+
+# Disable default login page so we can use our custom JWT filter
+spring.security.user.name: user
+spring.security.user.password: password
